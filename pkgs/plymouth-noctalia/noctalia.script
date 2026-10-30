@@ -1,0 +1,39 @@
+Window.SetBackgroundTopColor(0.0275, 0.0275, 0.1333);
+Window.SetBackgroundBottomColor(0.0275, 0.0275, 0.1333);
+
+for (i = 0; i < 192; i++)
+  frames[i] = Image("animation-" + i + ".png");
+
+sprite = Sprite(frames[0]);
+sprite.SetX(Window.GetWidth()  / 2 - frames[0].GetWidth()  / 2);
+sprite.SetY(Window.GetHeight() / 2 - frames[0].GetHeight() / 2);
+sprite.SetZ(15);
+
+count = 0;
+
+fun refresh_callback() {
+  sprite.SetImage(frames[Math.Int(count * 24 / 50) % 192]);
+  count++;
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+text_sprite = Sprite();
+text_y = Window.GetHeight() / 2 + frames[0].GetHeight() / 2 + 24;
+
+fun show_text(msg) {
+  img = Image.Text(msg, 1.0, 0.9608, 0.6078, 1, "Inter 14");
+  text_sprite.SetImage(img);
+  text_sprite.SetX(Window.GetWidth() / 2 - img.GetWidth() / 2);
+  text_sprite.SetY(text_y);
+}
+
+fun message_callback(msg) { show_text(msg); }
+Plymouth.SetMessageFunction(message_callback);
+
+fun password_callback(prompt, bullets) {
+  s = prompt + " ";
+  for (i = 0; i < bullets; i++)
+    s += "•";
+  show_text(s);
+}
+Plymouth.SetDisplayPasswordFunction(password_callback);

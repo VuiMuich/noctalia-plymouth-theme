@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Noctalia
+Description=Noctalia and Umbriel theme
+ModuleName=script
+
+[script]
+ImageDir=/etc/plymouth/themes/noctalia
+ScriptFile=/etc/plymouth/themes/noctalia/noctalia.script
