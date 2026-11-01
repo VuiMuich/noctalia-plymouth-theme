@@ -44,7 +44,6 @@ doesn't show up, add it to `boot.initrd.kernelModules` (e.g. `amdgpu`, `i915`).
 - Improve the animation.
 - This theme currently targets NixOS only. A more generic script and an
 installer for other distributions may be added in the future.
-- Include the Glaxnimate project file
 
 ## License
 
